@@ -28,8 +28,10 @@ export class ZipboxComponent implements OnInit {
    pattern.test(this.zipCode) ? ( this.zipBool = true) : this.zipBool = false;
  }
 
- getZip(){
-  this.ZipcodeService.getZip();
+ getZip(zipcode:string){
+  this.ZipcodeService.getZip(zipcode).subscribe(
+    (res)=> console.log(res), (err)=> console.log(err) 
+  );
   this.onZip();
  }
 

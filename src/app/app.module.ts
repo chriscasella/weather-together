@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { ZipboxComponent } from './zipbox/zipbox.component';
 import { WeatherComponent } from './weather/weather.component'
 import { ZipcodeService } from './zipcode.service';
+import { NavbarComponent } from './weather/navbar/navbar.component';
 
 const appRoutes: Routes = [
   {
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     ZipboxComponent,
-    WeatherComponent
+    WeatherComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

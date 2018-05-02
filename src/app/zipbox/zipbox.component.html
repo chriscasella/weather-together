@@ -1,0 +1,19 @@
+
+
+<div class="row justify-content-md-center">
+    <mat-form-field class="col-md-8">
+        <input 
+            matInput 
+            (input) ="isZip()"
+            [(ngModel)]="zipCode" 
+            placeholder="Enter Zip Code">
+    </mat-form-field>
+</div>
+<div class="row justify-content-md-center">
+    <button 
+        mat-raised-button 
+        [disabled]="!zipBool"
+        color="primary"
+        (click)="getZip(zipCode);" 
+        class="col-md-2">Go!</button>
+</div>

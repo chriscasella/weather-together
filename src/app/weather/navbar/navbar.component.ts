@@ -8,7 +8,7 @@ import { Constants } from '../../shared/constants';
 })
 export class NavbarComponent implements OnInit {
   zipCode = this.Constants.zipCode;
-  
+
   constructor(public Constants: Constants) { }
 
   ngOnInit() {

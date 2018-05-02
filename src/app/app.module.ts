@@ -16,7 +16,13 @@ import { ZipcodeService } from './zipcode.service';
 
 const appRoutes: Routes = [
   {
-    path: 'weather', component: WeatherComponent
+    path: '', redirectTo: '/home', pathMatch: 'full'
+  },
+  {
+    path: 'weather', component: WeatherComponent,
+  },
+  {
+    path: 'home', component: HomeComponent
   }
 ];
 

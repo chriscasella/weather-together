@@ -17,6 +17,10 @@ export class ZipboxComponent implements OnInit {
 
   constructor(private router: Router, private ZipcodeService: ZipcodeService, private Constants: Constants) {
    }
+   //need event emitter for response of zip call to wg.
+   //@Output () stationInfo: EventEmitter<any> = new EventEmitter();
+   //This might actually need to pass this response obj to the weather component. Then navbar will inheirit the info as well. zip will then call data sources on weather page. 
+   //Invoke the calls for services on the from onDestroy() event on this component. Preloading if you will.
 
 
   ngOnInit() {
@@ -32,6 +36,7 @@ export class ZipboxComponent implements OnInit {
   this.ZipcodeService.getZip(zipcode).subscribe(
     (res)=>{
       console.log(res)
+
       this.onZip();
     } 
     , (err)=> {

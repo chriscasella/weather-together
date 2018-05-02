@@ -4,7 +4,8 @@ import { Constants } from '../../shared/constants';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
+  providers: [Constants]
 })
 export class NavbarComponent implements OnInit {
   zipCode = this.Constants.zipCode;

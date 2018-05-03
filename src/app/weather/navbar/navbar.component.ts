@@ -1,19 +1,19 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Constants } from '../../shared/constants';
+import { ZipcodeService } from '../../zipcode.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
-  providers: [Constants]
+  providers: [ZipcodeService]
 })
 export class NavbarComponent implements OnInit {
-  @Input() zipCode: string;
+  @Input() localStation: any;
   
-  constructor(public Constants: Constants) { }
+  constructor(public ZipcodeService: ZipcodeService) { }
   
   ngOnInit() {
-    console.log(this.Constants.zipCode)
+    console.log(this.ZipcodeService.zipCode);
   }
   
 }

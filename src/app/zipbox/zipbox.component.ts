@@ -2,7 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ZipcodeService } from '../zipcode.service';
 import { Constants } from '../shared/constants';
-
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-zipbox',
@@ -11,8 +11,9 @@ import { Constants } from '../shared/constants';
   providers: [ZipcodeService, Constants]
 })
 export class ZipboxComponent implements OnInit {
-@Output() zipCode: string;
- zipBool:boolean = false;
+@Output() onLocalStation: EventEmitter<any> = new EventEmitter();
+zipCode:string;
+zipBool:boolean = false;
 
   constructor(private router: Router, private ZipcodeService: ZipcodeService, private Constants: Constants) {
    }
@@ -35,7 +36,7 @@ export class ZipboxComponent implements OnInit {
   this.ZipcodeService.getZip(zipcode).subscribe(
     (res)=>{
       console.log(res)
-
+      this.onLocalStation.emit(res);
       this.onZip();
     } 
     , (err)=> {

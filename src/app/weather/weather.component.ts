@@ -8,12 +8,11 @@ import { Component, OnInit, Input } from '@angular/core';
 export class WeatherComponent implements OnInit {
   constructor() { }
   
+  
   ngOnInit() {
   }
   
-  @Input() 
   onLocalStation(res:any){
-    console.log('from weather component!',res);
   }
 
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { gitIgnore } from './gitIgnore';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable ()
 export class ZipcodeService {

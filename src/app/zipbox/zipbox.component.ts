@@ -11,7 +11,6 @@ import { EventEmitter } from '@angular/core';
   providers: [ZipcodeService, Constants]
 })
 export class ZipboxComponent implements OnInit {
-@Output() onLocalStation: EventEmitter<any> = new EventEmitter();
 zipCode:string;
 zipBool:boolean = false;
 
@@ -36,7 +35,6 @@ zipBool:boolean = false;
   this.ZipcodeService.getZip(zipcode).subscribe(
     (res)=>{
       console.log(res)
-      this.onLocalStation.emit(res);
       this.onZip();
     } 
     , (err)=> {

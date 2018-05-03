@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ZipcodeService } from '../zipcode.service';
 import { Constants } from '../shared/constants';
@@ -11,8 +11,7 @@ import { Constants } from '../shared/constants';
   providers: [ZipcodeService, Constants]
 })
 export class ZipboxComponent implements OnInit {
-  
- zipCode:string;
+@Output() zipCode: string;
  zipBool:boolean = false;
 
   constructor(private router: Router, private ZipcodeService: ZipcodeService, private Constants: Constants) {
@@ -46,7 +45,6 @@ export class ZipboxComponent implements OnInit {
  }
 
  onZip(){
-   //this.router.navigate(['/weather']);
    this.Constants.zipCode = this.zipCode;
  }
 }

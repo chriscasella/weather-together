@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Constants } from '../../shared/constants';
 
 @Component({
@@ -8,7 +8,7 @@ import { Constants } from '../../shared/constants';
   providers: [Constants]
 })
 export class NavbarComponent implements OnInit {
-  zipCode = this.Constants.zipCode;
+  @Input() zipCode: string;
   
   constructor(public Constants: Constants) { }
   

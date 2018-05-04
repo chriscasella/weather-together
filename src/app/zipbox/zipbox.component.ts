@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ZipcodeService } from '../zipcode.service';
 import { Constants } from '../shared/constants';
 import { EventEmitter } from '@angular/core';
-
+import { Subscription } from 'rxjs/Rx';
 @Component({
   selector: 'app-zipbox',
   templateUrl: './zipbox.component.html',
@@ -35,15 +35,10 @@ zipBool:boolean = false;
   this.ZipcodeService.getZip(zipcode).subscribe(
     (res)=>{
       console.log(res)
-      this.onZip();
     } 
     , (err)=> {
       console.log(err)
     } 
   );
- }
-
- onZip(){
-   this.Constants.zipCode = this.zipCode;
- }
+ };
 }

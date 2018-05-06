@@ -8,12 +8,11 @@ import { ZipcodeService } from '../zipcode.service';
   providers: [ZipcodeService]
 })
 export class WeatherComponent implements OnInit {
-  zipCode = this.ZipcodeService.zipCode;
   constructor(private ZipcodeService: ZipcodeService) { }
   
   
   ngOnInit() {
-    this.ZipcodeService.getZip(this.zipCode).subscribe(res=>console.log('from weather!!!!', res));
+    this.ZipcodeService.onZip.subscribe((res)=> console.log('res from weather!!!', res))
   }
   
   onLocalStation(res:any){

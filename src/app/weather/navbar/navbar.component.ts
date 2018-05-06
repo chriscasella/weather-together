@@ -13,7 +13,6 @@ export class NavbarComponent implements OnInit {
   constructor(public ZipcodeService: ZipcodeService) { }
   
   ngOnInit() {
-    console.log(this.ZipcodeService.zipCode);
   }
   
 }

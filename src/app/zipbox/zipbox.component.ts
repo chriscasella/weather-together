@@ -32,13 +32,6 @@ zipBool:boolean = false;
  }
 
  getZip(zipcode:string){
-  this.ZipcodeService.getZip(zipcode).subscribe(
-    (res)=>{
-      console.log(res)
-    } 
-    , (err)=> {
-      console.log(err)
-    } 
-  );
+  this.ZipcodeService.getZip(zipcode)
  };
 }

@@ -12,7 +12,7 @@ export class WeatherComponent implements OnInit {
   
   
   ngOnInit() {
-    this.ZipcodeService.onZip.subscribe((res)=> console.log('res from weather!!!', res))
+    this.ZipcodeService.getZip(null).subscribe((res)=>console.log('from weather component', res))
   }
   
   onLocalStation(res:any){

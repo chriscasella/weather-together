@@ -1,22 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ZipcodeService } from '../zipcode.service';
-
-
-
+import { Constants } from '../shared/constants';
+import { EventEmitter } from '@angular/core';
+import { Subscription } from 'rxjs/Rx';
 @Component({
   selector: 'app-zipbox',
   templateUrl: './zipbox.component.html',
   styleUrls: ['./zipbox.component.css'],
-  providers: [ZipcodeService]
+  providers: [Constants]
 })
 export class ZipboxComponent implements OnInit {
-  
- zipCode:string;
- zipBool:boolean = false;
+zipCode:string;
+zipBool:boolean = false;
 
-  constructor(private router: Router, private ZipcodeService: ZipcodeService) {
+  constructor(private router: Router, private Constants: Constants) {
    }
+   //need event emitter for response of zip call to wg.
+   //@Output () stationInfo: EventEmitter<any> = new EventEmitter();
+   //This might actually need to pass this response obj to the weather component. Then navbar will inheirit the info as well. zip will then call data sources on weather page. 
+   //Invoke the calls for services on the from onDestroy() event on this component. Preloading if you will.
 
 
   ngOnInit() {
@@ -29,13 +32,6 @@ export class ZipboxComponent implements OnInit {
  }
 
  getZip(zipcode:string){
-  this.ZipcodeService.getZip(zipcode).subscribe(
-    (res)=> console.log(res), (err)=> console.log(err) 
-  );
-  this.onZip();
- }
-
- onZip(){
-   this.router.navigate(['/weather']);
- }
+   this.router.navigate(['/weather/'+ zipcode]);
+ };
 }

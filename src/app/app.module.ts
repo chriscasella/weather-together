@@ -20,7 +20,7 @@ const appRoutes: Routes = [
     path: '', redirectTo: '/home', pathMatch: 'full'
   },
   {
-    path: 'weather', component: WeatherComponent,
+    path: 'weather/:zip', component: WeatherComponent 
   },
   {
     path: 'home', component: HomeComponent

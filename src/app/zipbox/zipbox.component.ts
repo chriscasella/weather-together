@@ -8,13 +8,13 @@ import { Subscription } from 'rxjs/Rx';
   selector: 'app-zipbox',
   templateUrl: './zipbox.component.html',
   styleUrls: ['./zipbox.component.css'],
-  providers: [ZipcodeService, Constants]
+  providers: [Constants]
 })
 export class ZipboxComponent implements OnInit {
 zipCode:string;
 zipBool:boolean = false;
 
-  constructor(private router: Router, private ZipcodeService: ZipcodeService, private Constants: Constants) {
+  constructor(private router: Router, private Constants: Constants) {
    }
    //need event emitter for response of zip call to wg.
    //@Output () stationInfo: EventEmitter<any> = new EventEmitter();
@@ -32,6 +32,6 @@ zipBool:boolean = false;
  }
 
  getZip(zipcode:string){
-  this.ZipcodeService.getZip(zipcode)
+   this.router.navigate(['/weather/'+ zipcode]);
  };
 }

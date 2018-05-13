@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 //material design
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatFormFieldModule, MatInputModule, MatCardModule } from '@angular/material';
 import { PatternValidator } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -14,6 +14,8 @@ import { ZipboxComponent } from './zipbox/zipbox.component';
 import { WeatherComponent } from './weather/weather.component'
 import { ZipcodeService } from './zipcode.service';
 import { NavbarComponent } from './weather/navbar/navbar.component';
+import { WunderGroundComponent } from './weather/wunder-ground/wunder-ground.component';
+import { WeatherService } from './weather.service';
 
 const appRoutes: Routes = [
   {
@@ -33,7 +35,8 @@ const appRoutes: Routes = [
     HomeComponent,
     ZipboxComponent,
     WeatherComponent,
-    NavbarComponent
+    NavbarComponent,
+    WunderGroundComponent
   ],
   imports: [
     BrowserModule,
@@ -41,11 +44,12 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCardModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
-  providers: [ZipcodeService],
+  providers: [WeatherService, ZipcodeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

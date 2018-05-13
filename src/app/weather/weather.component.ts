@@ -27,9 +27,12 @@ export class WeatherComponent implements OnInit {
     this.ZipcodeService.getZip(zipCode).subscribe(res=> {
       console.log(res)
       this.myLocalStation = res
-      this.localStation.emit(res)
+      this.emitLocalStation();
       //console.log(this.localStation, 'local')
       })
   }
 
+  emitLocalStation(){
+    this.localStation.emit(this.myLocalStation)
+  };
 }

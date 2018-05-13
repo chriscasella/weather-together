@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ZipcodeService } from '../zipcode.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
@@ -10,15 +10,26 @@ import { ActivatedRoute } from '@angular/router';
   providers: [ZipcodeService]
 })
 export class WeatherComponent implements OnInit {
+  @Output() localStation = new EventEmitter();
+  myLocalStation:any;
   constructor(private ZipcodeService: ZipcodeService, private route: ActivatedRoute) { }
   
-
   
   ngOnInit() {
-   this.route.params.subscribe(params => console.log('this is the params', params))
+   this.route.params.subscribe(
+     params => {
+     console.log(params)
+      this.getLocalStation(params.zip)
+    })
   }
   
-  onLocalStation(res:any){
+  getLocalStation(zipCode:any){
+    this.ZipcodeService.getZip(zipCode).subscribe(res=> {
+      console.log(res)
+      this.myLocalStation = res;
+      this.localStation.emit(this.myLocalStation)
+      //console.log(this.localStation, 'local')
+      })
   }
 
 }

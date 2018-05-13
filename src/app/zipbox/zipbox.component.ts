@@ -32,6 +32,6 @@ zipBool:boolean = false;
  }
 
  getZip(zipcode:string){
-  this.ZipcodeService.getZip(zipcode)
+   this.router.navigate(['/weather/'+ zipcode]);
  };
 }

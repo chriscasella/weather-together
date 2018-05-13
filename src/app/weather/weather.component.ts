@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ZipcodeService } from '../zipcode.service';
 import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-weather',
@@ -9,12 +10,12 @@ import { Observable } from 'rxjs';
   providers: [ZipcodeService]
 })
 export class WeatherComponent implements OnInit {
-  constructor(private ZipcodeService: ZipcodeService) { }
+  constructor(private ZipcodeService: ZipcodeService, private route: ActivatedRoute) { }
   
-  getZip = Observable.fromPromise(this.ZipcodeService.getZip(null));
+
   
   ngOnInit() {
-    return this.getZip.map(x=> console.log(x) )
+   this.route.params.subscribe(params => console.log('this is the params', params))
   }
   
   onLocalStation(res:any){

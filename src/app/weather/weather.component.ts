@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   providers: [ZipcodeService]
 })
 export class WeatherComponent implements OnInit {
-  @Output() localStation = new EventEmitter();
+  @Output() localStation:EventEmitter<any> = new EventEmitter();
   myLocalStation:any;
   constructor(private ZipcodeService: ZipcodeService, private route: ActivatedRoute) { }
   
@@ -26,8 +26,8 @@ export class WeatherComponent implements OnInit {
   getLocalStation(zipCode:any){
     this.ZipcodeService.getZip(zipCode).subscribe(res=> {
       console.log(res)
-      this.myLocalStation = res;
-      this.localStation.emit(this.myLocalStation)
+      this.myLocalStation = res
+      this.localStation.emit(res)
       //console.log(this.localStation, 'local')
       })
   }

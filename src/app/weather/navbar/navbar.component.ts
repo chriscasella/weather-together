@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ZipcodeService } from '../../zipcode.service';
-import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-navbar',
@@ -8,13 +8,18 @@ import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
   styleUrls: ['./navbar.component.css'],
   providers: [ZipcodeService]
 })
-export class NavbarComponent implements OnChanges {
+export class NavbarComponent implements OnInit {
   @Input() localStation: any;
-  myStation:any; 
+  
   constructor(public ZipcodeService: ZipcodeService) { }
   
-  ngOnChanges() {
-    this.localStation.subscribe(res => this.myStation=res, console.log('from navbar'))
+  ngOnInit() {
+    this.getZip();
   }
-  
+  getZip(){
+    
+    return Observable.of(this.localStation).subscribe( 
+      res => console.log(res))
+    
+  }
 }

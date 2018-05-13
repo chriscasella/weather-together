@@ -16,8 +16,10 @@ export class ZipcodeService {
 
     getZip(zip:string){
         if(zip == null){
+            console.log('inside if')
             return this.cachedRes;
         } else if (zip != null) {
+            console.log('inside else if')
             this.http.post('http://api.wunderground.com/api/' + this.wg_key + '/geolookup/q/' + zip + '.json', zip).subscribe((res)=>this.cachedRes = res)
 
         }

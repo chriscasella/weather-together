@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.component.html',
-  styleUrls: ['./weather.component.css'],
+  styleUrls: ['./weather.component.css', './weather-icons.css'],
   providers: [WeatherService, ZipcodeService]
 })
 export class WeatherComponent implements OnInit {
@@ -51,7 +51,7 @@ export class WeatherComponent implements OnInit {
     const lat = this.myLocalStation.location.lat;
     const lon = this.myLocalStation.location.lon;
     this.WeatherService.getWgForecast(lat,lon).subscribe(res=> {
-      console.log(res);
+      //console.log(res);
       this.wgCurrentForecast = res;
       this.emitWgForecast();
     })

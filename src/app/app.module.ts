@@ -16,6 +16,7 @@ import { ZipcodeService } from './zipcode.service';
 import { NavbarComponent } from './weather/navbar/navbar.component';
 import { WunderGroundComponent } from './weather/wunder-ground/wunder-ground.component';
 import { WeatherService } from './weather.service';
+import { StationNavComponent } from './weather/station-nav/station-nav.component';
 
 const appRoutes: Routes = [
   {
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
     ZipboxComponent,
     WeatherComponent,
     NavbarComponent,
-    WunderGroundComponent
+    WunderGroundComponent,
+    StationNavComponent
   ],
   imports: [
     BrowserModule,

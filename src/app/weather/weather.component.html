@@ -1,3 +1,9 @@
 <app-navbar
     [myLocalStation]="myLocalStation"
 ></app-navbar>
+<app-wunder-ground
+    *ngIf="wunderGround"
+    class="weather-card"
+    [(wgCurrentForecast)]="wgCurrentForecast"
+>   
+</app-wunder-ground>

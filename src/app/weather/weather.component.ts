@@ -1,18 +1,24 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ZipcodeService } from '../zipcode.service';
+import { WeatherService } from '../weather.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.component.html',
-  styleUrls: ['./weather.component.css'],
-  providers: [ZipcodeService]
+  styleUrls: ['./weather.component.css', './weather-icons.css'],
+  providers: [WeatherService, ZipcodeService]
 })
 export class WeatherComponent implements OnInit {
   @Output() localStation:EventEmitter<any> = new EventEmitter();
+  @Output() wgForecast:EventEmitter<any> = new EventEmitter();
+  
   myLocalStation:any;
-  constructor(private ZipcodeService: ZipcodeService, private route: ActivatedRoute) { }
+  wunderGround:boolean = true;
+  wgCurrentForecast:any;
+  
+  constructor(private ZipcodeService: ZipcodeService, private WeatherService: WeatherService, private route: ActivatedRoute) { }
   
   
   ngOnInit() {
@@ -34,5 +40,20 @@ export class WeatherComponent implements OnInit {
 
   emitLocalStation(){
     this.localStation.emit(this.myLocalStation)
+    this.getWgForecast();
+  };
+
+  emitWgForecast(){
+    this.wgForecast.emit(this.wgCurrentForecast);
+  };
+
+  getWgForecast(){
+    const lat = this.myLocalStation.location.lat;
+    const lon = this.myLocalStation.location.lon;
+    this.WeatherService.getWgForecast(lat,lon).subscribe(res=> {
+      //console.log(res);
+      this.wgCurrentForecast = res;
+      this.emitWgForecast();
+    })
   };
 }

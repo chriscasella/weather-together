@@ -1,0 +1,53 @@
+<mat-progress-spinner *ngIf="!isWgCurrentForecast"></mat-progress-spinner>
+<div class="container" *ngIf="isWgCurrentForecast">
+  <mat-card>
+    <mat-card-title>
+      <div class="row">
+        <div class="offset-md-2"></div>
+        <span class="ml-4">
+          <i class="wi wi-thermometer"></i>
+        </span>
+        <div class="col-md-4">
+          <h2>{{wg.temp_f}} 
+            <span class="col-md-2">
+              <i class="wi wi-fahrenheit"></i>
+            </span>
+          </h2>
+        </div>
+        <span class="ml-4">
+          <i class={{weatherIcon}} ></i>
+        </span>
+        <div class="col-md-4">
+          <h2>{{wg.weather}}</h2>
+        </div>
+      </div>
+    </mat-card-title>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          Wind Speed
+        </div>
+        <div class="col">
+          Wind Direction
+        </div>
+        <div class="col">
+          Relative Humidity
+          <i class="wi wi-humidity"></i>
+        </div>
+      </div>
+      <div class="dropdown-divider"></div>
+      <div class="row">
+        <span class="offset-sm-1"></span>
+        <div class="col">
+          {{wg.wind_mph}} MPH
+        </div>
+        <div class="col">
+          {{wg.wind_dir}}
+        </div>
+        <div class="col">
+          {{wg.relative_humidity}}
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

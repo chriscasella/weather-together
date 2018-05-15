@@ -5,7 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 //material design
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatFormFieldModule, MatInputModule, MatCardModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatButtonModule, MatFormFieldModule, MatInputModule, MatCardModule, MatProgressSpinnerModule, MatIconModule } from '@angular/material';
+import { MatMenuModule } from '@angular/material/menu';
 import { PatternValidator } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -48,6 +49,8 @@ const appRoutes: Routes = [
     MatInputModule,
     MatProgressSpinnerModule,
     MatCardModule,
+    MatMenuModule,
+    MatIconModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule

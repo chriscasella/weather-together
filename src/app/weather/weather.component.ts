@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { ZipcodeService } from '../zipcode.service';
 import { WeatherService } from '../weather.service';
 import { Observable } from 'rxjs';
@@ -13,9 +13,15 @@ import { ActivatedRoute } from '@angular/router';
 export class WeatherComponent implements OnInit {
   @Output() localStation:EventEmitter<any> = new EventEmitter();
   @Output() wgForecast:EventEmitter<any> = new EventEmitter();
+  @Input() activeSation:any;
   
   myLocalStation:any;
+
   wunderGround:boolean = true;
+  darkSky:boolean = false;
+  weatherbit:boolean = false;
+  nws:boolean = false;
+
   wgCurrentForecast:any;
   
   constructor(private ZipcodeService: ZipcodeService, private WeatherService: WeatherService, private route: ActivatedRoute) { }
@@ -27,6 +33,7 @@ export class WeatherComponent implements OnInit {
      console.log(params)
       this.getLocalStation(params.zip)
     })
+    this.activeSation.subscribe(res=>console.log(res))
   }
   
   getLocalStation(zipCode:any){
@@ -55,5 +62,9 @@ export class WeatherComponent implements OnInit {
       this.wgCurrentForecast = res;
       this.emitWgForecast();
     })
+  };
+
+  setLocalStation(){
+    this.activeSation.subscribe(res => console.log('res'));
   };
 }

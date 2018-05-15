@@ -1,3 +1,20 @@
-<p>
-  station-nav works!
-</p>
+<div class="row station-nav">
+  <button 
+    #selectedStation
+    mat-raised-button 
+    *ngFor="let station of stations" 
+    class="col"
+    (click)="setActiveStation(station.symbol)" 
+  >{{station.display}}</button>
+</div>
+    <!--
+    <div class="offset-sm-1"></div>
+    <button mat-raised-button class="col"> Wunder Ground</button>
+    <div class="offset-sm-1"></div>
+    <button mat-raised-button class="col"> Dark Sky </button>
+    <div class="offset-sm-1"></div>
+    <button mat-raised-button class="col"> NWS </button>
+    <div class="offset-sm-1"></div>
+    <button mat-raised-button class="col"> Weatherbit.io </button>
+    <div class="offset-sm-1"></div>
+    -->

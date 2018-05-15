@@ -3,18 +3,21 @@
   <mat-card>
     <mat-card-title>
       <div class="row">
-        <div class="col-md-6">
-          <span>
-            <i class="wi wi-thermometer"></i>
-          </span>
+        <div class="offset-md-2"></div>
+        <span class="ml-4">
+          <i class="wi wi-thermometer"></i>
+        </span>
+        <div class="col-md-4">
           <h2>{{wg.temp_f}} 
-            <span>
+            <span class="col-md-2">
               <i class="wi wi-fahrenheit"></i>
             </span>
           </h2>
         </div>
-        <div class="col-md-6">
+        <span class="ml-4">
           <i class={{weatherIcon}} ></i>
+        </span>
+        <div class="col-md-4">
           <h2>{{wg.weather}}</h2>
         </div>
       </div>
@@ -32,7 +35,9 @@
           <i class="wi wi-humidity"></i>
         </div>
       </div>
+      <div class="dropdown-divider"></div>
       <div class="row">
+        <span class="offset-sm-1"></span>
         <div class="col">
           {{wg.wind_mph}} MPH
         </div>

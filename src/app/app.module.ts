@@ -18,6 +18,7 @@ import { NavbarComponent } from './weather/navbar/navbar.component';
 import { WunderGroundComponent } from './weather/wunder-ground/wunder-ground.component';
 import { WeatherService } from './weather.service';
 import { StationNavComponent } from './weather/station-nav/station-nav.component';
+import { DarkSkyComponent } from './weather/dark-sky/dark-sky.component';
 
 const appRoutes: Routes = [
   {
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
     WeatherComponent,
     NavbarComponent,
     WunderGroundComponent,
-    StationNavComponent
+    StationNavComponent,
+    DarkSkyComponent
   ],
   imports: [
     BrowserModule,

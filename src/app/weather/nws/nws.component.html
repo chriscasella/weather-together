@@ -7,17 +7,18 @@
           <i class="wi wi-thermometer"></i>
         </span>
         <div class="col-md-4">
-          <h2>{{ds.apparentTemperature}}
+          <h2>{{nws.temperature}}
             <span class="col-md-2">
               <i class="wi wi-fahrenheit"></i>
             </span>
           </h2>
         </div>
         <span class="ml-4">
-          <i [ngClass]="weatherIcon"></i>
+          <img [src]="nws.icon">
+          <!-- <i [ngClass]="weatherIcon"></i> -->
         </span>
         <div class="col-md-4">
-          <h2>{{ds.summary}}</h2>
+          <h2>{{nws.shortForecast}}</h2>
         </div>
       </div>
     </mat-card-title>
@@ -38,13 +39,13 @@
       <div class="row">
         <span class="offset-sm-1"></span>
         <div class="col">
-          {{ds.windSpeed}} MPH
+          {{nws.windSpeed}} MPH
         </div>
         <div class="col">
-
+          {{nws.windDirection}}
         </div>
         <div class="col">
-          {{ds.humidity * 100}}%
+          
         </div>
       </div>
     </mat-card-content>

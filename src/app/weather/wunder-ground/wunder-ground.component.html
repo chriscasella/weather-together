@@ -1,4 +1,4 @@
-<mat-progress-spinner *ngIf="!isWgCurrentForecast"></mat-progress-spinner>
+<mat-progress-spinner *ngIf="wgCurrentForecast == undefined"></mat-progress-spinner>
 <div class="container" *ngIf="isWgCurrentForecast">
   <mat-card>
     <mat-card-title>

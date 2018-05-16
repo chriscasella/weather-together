@@ -1,3 +1,52 @@
-<p>
-  nws works!
-</p>
+<div class="container">
+  <mat-card>
+    <mat-card-title>
+      <div class="row">
+        <div class="offset-md-2"></div>
+        <span class="ml-4">
+          <i class="wi wi-thermometer"></i>
+        </span>
+        <div class="col-md-4">
+          <h2>{{ds.apparentTemperature}}
+            <span class="col-md-2">
+              <i class="wi wi-fahrenheit"></i>
+            </span>
+          </h2>
+        </div>
+        <span class="ml-4">
+          <i [ngClass]="weatherIcon"></i>
+        </span>
+        <div class="col-md-4">
+          <h2>{{ds.summary}}</h2>
+        </div>
+      </div>
+    </mat-card-title>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          Wind Speed
+        </div>
+        <div class="col">
+          Wind Direction
+        </div>
+        <div class="col">
+          Relative Humidity
+          <i class="wi wi-humidity"></i>
+        </div>
+      </div>
+      <div class="dropdown-divider"></div>
+      <div class="row">
+        <span class="offset-sm-1"></span>
+        <div class="col">
+          {{ds.windSpeed}} MPH
+        </div>
+        <div class="col">
+
+        </div>
+        <div class="col">
+          {{ds.humidity * 100}}%
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

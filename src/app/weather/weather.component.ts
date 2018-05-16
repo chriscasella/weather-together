@@ -14,6 +14,7 @@ export class WeatherComponent implements OnInit {
   @Output() localStation:EventEmitter<any> = new EventEmitter();
   @Output() wgForecast:EventEmitter<any> = new EventEmitter();
   @Output() dsForecast:EventEmitter<any> = new EventEmitter();
+  @Output() nwsForecast:EventEmitter<any> = new EventEmitter();
 
   @Input() activeSation:any;
   
@@ -23,6 +24,7 @@ export class WeatherComponent implements OnInit {
 
   wgCurrentForecast:any;
   dsCurrentForecast:any;
+  nwsCurrentForecast:any;
 
   constructor(private ZipcodeService: ZipcodeService, private WeatherService: WeatherService, private route: ActivatedRoute) { }
   
@@ -51,6 +53,8 @@ export class WeatherComponent implements OnInit {
         this.getWgForecast();
       case 'ds':
         this.getDsForecast();
+      case 'nws':
+        this.getNwsForecast();
     }
   };
 
@@ -67,6 +71,10 @@ export class WeatherComponent implements OnInit {
     this.wgForecast.emit(this.wgCurrentForecast);
   };
 
+  emitNwsForecast(){
+    this.nwsForecast.emit(this.nwsCurrentForecast);
+  };
+
   getDsForecast(){
     this.WeatherService.getDsForecast().subscribe(res=>{
       this.dsCurrentForecast = res;
@@ -81,6 +89,13 @@ export class WeatherComponent implements OnInit {
       //console.log(res);
       this.wgCurrentForecast = res;
       this.emitWgForecast();
+    })
+  };
+
+  getNwsForecast(){
+    this.WeatherService.getNwsForecast().subscribe(res=>{
+      this.nwsCurrentForecast = res;
+      this.emitNwsForecast();
     })
   };
 

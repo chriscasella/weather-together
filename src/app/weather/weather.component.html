@@ -12,8 +12,13 @@
     class="weather-card"
     [(dsCurrentForecast)]="dsCurrentForecast"
 >
-
 </app-dark-sky>
+<app-nws
+    *ngIf="activeStation == 'nws'"
+    class="weather-card"
+    [(nwsCurrentForecast)]="nwsCurrentForecast"
+>
+</app-nws>
 <!-- other station components to go here -->
 
 <br>

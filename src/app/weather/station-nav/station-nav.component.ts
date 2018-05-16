@@ -36,7 +36,7 @@ export class StationNavComponent implements OnInit {
   }
 
   setActiveStation(stationName){
-    console.log(stationName);
+    // console.log(stationName);
     this.station.emit(stationName);
   }
 }

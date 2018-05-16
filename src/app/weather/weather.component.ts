@@ -17,10 +17,7 @@ export class WeatherComponent implements OnInit {
   
   myLocalStation:any;
 
-  wunderGround:boolean = true;
-  darkSky:boolean = false;
-  weatherbit:boolean = false;
-  nws:boolean = false;
+  activeStation:string = 'wg';
 
   wgCurrentForecast:any;
   
@@ -65,7 +62,7 @@ export class WeatherComponent implements OnInit {
   };
 
   setLocalStation($event: any){
-    this.activeSation = $event;
-    console.log($event);
+    this.activeStation = $event;
+    console.log(this.activeStation)
   };
 }

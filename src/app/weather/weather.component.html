@@ -2,7 +2,7 @@
     [myLocalStation]="myLocalStation"
 ></app-navbar>
 <app-wunder-ground
-    *ngIf="wunderGround"
+    *ngIf="activeStation == 'wg'"
     class="weather-card"
     [(wgCurrentForecast)]="wgCurrentForecast"
 >   
@@ -11,4 +11,6 @@
 
 <br>
 <br>
-<app-station-nav (station)="setLocalStation($event)"></app-station-nav>
+<app-station-nav 
+    (station)="setLocalStation($event)"
+></app-station-nav>

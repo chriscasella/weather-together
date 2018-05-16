@@ -9,7 +9,7 @@ import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 export class WunderGroundComponent implements OnChanges {
   @Input() public wgCurrentForecast:any;
   public wg:any;
-  weatherIcon:string;
+  public weatherIcon:string;
 
   isWgCurrentForecast:boolean = false;
   constructor() { }
@@ -22,12 +22,12 @@ export class WunderGroundComponent implements OnChanges {
   }
   checkWeatherIcon(){
     const w = this.wgCurrentForecast.current_observation.weather;
-    console.log('above swithc');
+    console.log('above switch');
     switch(w){
-      case w == 'Chance of Flurries':
+      case 'Chance of Flurries':
         this.weatherIcon = 'wi wi-snow-wind';
         break;
-      case w == 'Rain':
+      case 'Rain':
         this.weatherIcon = 'wi wi-rain';
         break;
       case 'Chance of Rain':

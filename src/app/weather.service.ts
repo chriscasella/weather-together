@@ -8,10 +8,21 @@ import 'rxjs/Rx';
 @Injectable()
 export class WeatherService {
     wg_key = gitIgnore.wg_key
+    ds_key = gitIgnore.ds_key
+
+    //from wg initial call
+    lat:string
+    lon:string
     constructor(private http: HttpClient){}
     
     getWgForecast(lat:string, lon:string){
+        this.lat = lat;
+        this.lon = lon;
         return this.http.get('http://api.wunderground.com/api/' + this.wg_key + '/conditions/q/' + lat + ',' + lon + '.json')
     };
+
+    getDsForecast(){
+        return this.http.get('https://api.darksky.net/forecast/' + this.ds_key + '/' + this.lat + ',' + this.lon)
+    }
 
 }

@@ -7,6 +7,13 @@
     [(wgCurrentForecast)]="wgCurrentForecast"
 >   
 </app-wunder-ground>
+<app-dark-sky
+    *ngIf="activeStation == 'ds'"
+    class="weather-card"
+    [(dsCurrentForecast)]="dsCurrentForecast"
+>
+
+</app-dark-sky>
 <!-- other station components to go here -->
 
 <br>

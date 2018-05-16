@@ -1,5 +1,4 @@
-<mat-progress-spinner *ngIf="wgCurrentForecast == undefined"></mat-progress-spinner>
-<div class="container" *ngIf="isWgCurrentForecast">
+<div class="container">
   <mat-card>
     <mat-card-title>
       <div class="row">
@@ -8,17 +7,17 @@
           <i class="wi wi-thermometer"></i>
         </span>
         <div class="col-md-4">
-          <h2>{{wg.temp_f}} 
+          <h2>{{ds.apparentTemperature}}
             <span class="col-md-2">
               <i class="wi wi-fahrenheit"></i>
             </span>
           </h2>
         </div>
         <span class="ml-4">
-          <i [ngClass]="weatherIcon" ></i>
+          <i [ngClass]="weatherIcon"></i>
         </span>
         <div class="col-md-4">
-          <h2>{{wg.weather}}</h2>
+          <h2>{{ds.summary}}</h2>
         </div>
       </div>
     </mat-card-title>
@@ -39,13 +38,13 @@
       <div class="row">
         <span class="offset-sm-1"></span>
         <div class="col">
-          {{wg.wind_mph}} MPH
+          {{ds.windSpeed}} MPH
         </div>
         <div class="col">
-          {{wg.wind_dir}}
+          
         </div>
         <div class="col">
-          {{wg.relative_humidity}}
+          {{ds.humidity * 100}}%
         </div>
       </div>
     </mat-card-content>

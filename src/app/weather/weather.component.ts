@@ -33,7 +33,7 @@ export class WeatherComponent implements OnInit {
      console.log(params)
       this.getLocalStation(params.zip)
     })
-    this.activeSation.subscribe(res=>console.log(res))
+    // this.activeSation.subscribe(res=>console.log(res))
   }
   
   getLocalStation(zipCode:any){
@@ -64,7 +64,8 @@ export class WeatherComponent implements OnInit {
     })
   };
 
-  setLocalStation(){
-    this.activeSation.subscribe(res => console.log('res'));
+  setLocalStation($event: any){
+    this.activeSation = $event;
+    console.log($event);
   };
 }

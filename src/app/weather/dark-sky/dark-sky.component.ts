@@ -7,10 +7,11 @@ import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
   styleUrls: ['./dark-sky.component.css']
 })
 export class DarkSkyComponent implements OnChanges {
-
+  @Input() public dsCurrentForecast:any;
   constructor() { }
 
   ngOnChanges() {
+    console.log('ds current forecast', this.dsCurrentForecast);
   }
 
 }

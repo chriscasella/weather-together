@@ -13,6 +13,8 @@ import { ActivatedRoute } from '@angular/router';
 export class WeatherComponent implements OnInit {
   @Output() localStation:EventEmitter<any> = new EventEmitter();
   @Output() wgForecast:EventEmitter<any> = new EventEmitter();
+  @Output() dsForecast:EventEmitter<any> = new EventEmitter();
+
   @Input() activeSation:any;
   
   myLocalStation:any;
@@ -20,7 +22,8 @@ export class WeatherComponent implements OnInit {
   activeStation:string = 'wg';
 
   wgCurrentForecast:any;
-  
+  dsCurrentForecast:any;
+
   constructor(private ZipcodeService: ZipcodeService, private WeatherService: WeatherService, private route: ActivatedRoute) { }
   
   
@@ -42,13 +45,33 @@ export class WeatherComponent implements OnInit {
       })
   }
 
+  getStationData(){
+    switch (this.activeStation){
+      case 'wg':
+        this.getWgForecast();
+      case 'ds':
+        this.getDsForecast();
+    }
+  };
+
   emitLocalStation(){
     this.localStation.emit(this.myLocalStation)
     this.getWgForecast();
   };
 
+  emitDsForecast(){
+    this.dsForecast.emit(this.dsCurrentForecast);
+  };
+
   emitWgForecast(){
     this.wgForecast.emit(this.wgCurrentForecast);
+  };
+
+  getDsForecast(){
+    this.WeatherService.getDsForecast().subscribe(res=>{
+      this.dsCurrentForecast = res;
+      this.emitDsForecast();
+    })
   };
 
   getWgForecast(){
@@ -64,5 +87,6 @@ export class WeatherComponent implements OnInit {
   setLocalStation($event: any){
     this.activeStation = $event;
     console.log(this.activeStation)
+    this.getStationData();
   };
 }

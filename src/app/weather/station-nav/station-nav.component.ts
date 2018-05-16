@@ -7,6 +7,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class StationNavComponent implements OnInit {
   @Output() station:EventEmitter<any> = new EventEmitter();
+  activeStation:string = 'wg';
   public stations = [
     {
       name: 'wunderGround',
@@ -37,6 +38,7 @@ export class StationNavComponent implements OnInit {
 
   setActiveStation(stationName){
     // console.log(stationName);
+    this.activeStation = stationName;
     this.station.emit(stationName);
   }
 }

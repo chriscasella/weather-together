@@ -1,0 +1,24 @@
+<ul class="nav station-nav justify-content-center">
+  <li class="nav-item ml-5 mr-5"
+  *ngFor="let station of stations">
+  <a
+  color="primary"
+    mat-button
+    class="nav-link"
+     [ngClass]="{active: activeStation == station.symbol}"
+    (click)="setActiveStation(station.symbol)" 
+  >{{station.display}}</a>
+  </li>
+</ul>
+
+    <!--
+    <div class="offset-sm-1"></div>
+    <button mat-raised-button class="col"> Wunder Ground</button>
+    <div class="offset-sm-1"></div>
+    <button mat-raised-button class="col"> Dark Sky </button>
+    <div class="offset-sm-1"></div>
+    <button mat-raised-button class="col"> NWS </button>
+    <div class="offset-sm-1"></div>
+    <button mat-raised-button class="col"> Weatherbit.io </button>
+    <div class="offset-sm-1"></div>
+    -->

@@ -10,7 +10,7 @@ import 'rxjs/Rx';
 export class WeatherService {
     wg_key = gitIgnore.wg_key
     ds_key = gitIgnore.ds_key
-
+    wb_key = gitIgnore.wb_key
     //from wg initial call
     lat:string
     lon:string
@@ -33,5 +33,9 @@ export class WeatherService {
            console.log(_res)
             return this.http.get(_res.properties.forecast)
         })
+    };
+
+    getWbForecast(){
+        return this.http.get('https://api.weatherbit.io/v2.0/current?lat=' + this.lat + '&lon=' + this.lon + '&key=' + this.wb_key + '&units=I');
     };
 }

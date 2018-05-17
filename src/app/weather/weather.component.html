@@ -27,6 +27,12 @@
         [(nwsCurrentForecast)]="nwsCurrentForecast"
     >
     </app-nws>
+    <app-weatherbit
+        *ngIf="activeStation == 'wb'"
+        class="weather-card"
+        [(wbCurrentForecast)]="wbCurrentForecast"
+    >
+    </app-weatherbit>
 </div>
 <!-- other station components to go here -->
 <app-station-nav 

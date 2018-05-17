@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { gitIgnore } from './gitIgnore';
 import { Subject } from 'rxjs/Subject';
+import { mergeMap } from 'rxjs/operators';
 import 'rxjs/Rx';
 
 @Injectable()
@@ -25,4 +26,12 @@ export class WeatherService {
         return this.http.get('https://api.darksky.net/forecast/' + this.ds_key + '/' + this.lat + ',' + this.lon)
     }
 
+    getNwsForecast(){
+        console.log('hello')
+        return this.http.get('https://api.weather.gov/points/' + this.lat + ',' + this.lon).switchMap(res=> {
+           let _res = res;
+           console.log(_res)
+            return this.http.get(_res.properties.forecast)
+        })
+    };
 }

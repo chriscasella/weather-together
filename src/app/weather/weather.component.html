@@ -1,28 +1,27 @@
-<app-navbar
-    [myLocalStation]="myLocalStation"
-></app-navbar>
-<app-wunder-ground
-    *ngIf="activeStation == 'wg'"
-    class="weather-card"
-    [(wgCurrentForecast)]="wgCurrentForecast"
->   
-</app-wunder-ground>
-<app-dark-sky
-    *ngIf="activeStation == 'ds'"
-    class="weather-card"
-    [(dsCurrentForecast)]="dsCurrentForecast"
->
-</app-dark-sky>
-<app-nws
-    *ngIf="activeStation == 'nws'"
-    class="weather-card"
-    [(nwsCurrentForecast)]="nwsCurrentForecast"
->
-</app-nws>
+<div class="card-container">
+    <app-navbar
+        [myLocalStation]="myLocalStation"
+    ></app-navbar>
+    <app-wunder-ground
+        *ngIf="activeStation == 'wg'"
+        class="weather-card"
+        [(wgCurrentForecast)]="wgCurrentForecast"
+    >   
+    </app-wunder-ground>
+    <app-dark-sky
+        *ngIf="activeStation == 'ds'"
+        class="weather-card"
+        [(dsCurrentForecast)]="dsCurrentForecast"
+    >
+    </app-dark-sky>
+    <app-nws
+        *ngIf="activeStation == 'nws'"
+        class="weather-card"
+        [(nwsCurrentForecast)]="nwsCurrentForecast"
+    >
+    </app-nws>
+</div>
 <!-- other station components to go here -->
-
-<br>
-<br>
 <app-station-nav 
     (station)="setLocalStation($event)"
 ></app-station-nav>

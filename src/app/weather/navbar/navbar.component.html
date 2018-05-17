@@ -1,9 +1,6 @@
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar bottom-shadow">
   <h2 class="header-text">
-    <span class="badge badge-secondary">{{myLocalStation.location.city}}</span>
-  </h2>
-  <h2> 
-    <span style="margin-left: -150%;" class="badge badge-secondary">{{myLocalStation.location.zip}}</span>
+   {{myLocalStation.location.city}} , {{myLocalStation.location.zip}}
   </h2>
   <h4 class="header-text"> Your Local Station
     <span class="badge badge-primary">{{myLocalStation.location.nearby_weather_stations.airport.station[0].city}}</span>

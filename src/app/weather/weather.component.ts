@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class WeatherComponent implements OnInit {
   @Output() localStation:EventEmitter<any> = new EventEmitter();
   @Output() wgForecast:EventEmitter<any> = new EventEmitter();
+  @Output() wgExtendedEmitter:EventEmitter<any> = new EventEmitter();
   @Output() dsForecast:EventEmitter<any> = new EventEmitter();
   @Output() nwsForecast:EventEmitter<any> = new EventEmitter();
   @Output() wbForecast:EventEmitter<any> = new EventEmitter();
@@ -77,6 +78,10 @@ export class WeatherComponent implements OnInit {
     this.wgForecast.emit(this.wgCurrentForecast);
   };
 
+  emitWgExtendedForecast(){
+    this.wgExtendedEmitter.emit(this.wgExtendedForecast);
+  };
+
   emitNwsForecast(){
     this.nwsForecast.emit(this.nwsCurrentForecast);
   };
@@ -101,10 +106,23 @@ export class WeatherComponent implements OnInit {
     const lon = this.myLocalStation.location.lon;
     this.WeatherService.getWgForecast(lat,lon).subscribe(res=> {
       //console.log(res);
+      this.getWgExtendedForecast();
       this.wgCurrentForecast = res;
       this.emitWgForecast();
     })
   };
+
+  getWgExtendedForecast(){
+    if(this.wgExtendedForecast == null ){
+      this.WeatherService.getWgExtendedForecast().subscribe(res=>{
+        console.log('wg extended forecast',res);
+        this.wgExtendedForecast = res;
+        this.emitWgExtendedForecast();
+      })
+    }else{
+      this.emitWgExtendedForecast();
+    }
+  }
 
   getNwsForecast(){
     if(this.nwsCurrentForecast == null){

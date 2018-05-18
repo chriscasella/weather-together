@@ -1,3 +1,11 @@
-<p>
-  wg-body works!
-</p>
+
+  <mat-card *ngFor="let day of extendedForecast" class="mt-4 mb-4">
+    <mat-card-title>
+      <h3>{{day.date.weekday}} {{day.date.monthname}} {{day.date.year}}</h3>
+    </mat-card-title>
+    <mat-card-content>
+      {{day.conditions}}
+      {{day.high.fahrenheit}}
+      {{day.low.fahrenheit}}
+    </mat-card-content>
+  </mat-card>

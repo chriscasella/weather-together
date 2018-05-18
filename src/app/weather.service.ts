@@ -29,9 +29,9 @@ export class WeatherService {
     getNwsForecast(){
         console.log('hello')
         return this.http.get('https://api.weather.gov/points/' + this.lat + ',' + this.lon).switchMap(res=> {
-           let _res = res;
-           console.log(_res)
-            return this.http.get(_res.properties.forecast)
+            const resp:any = res;
+           console.log(resp)
+            return this.http.get(resp.properties.forecast)
         })
     };
 

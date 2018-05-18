@@ -38,6 +38,9 @@
 <app-station-nav 
     (station)="setLocalStation($event)"
 ></app-station-nav>
-<div color="primary">
-    hello
-</div>
+<app-wg-body
+    *ngIf="activeStation == 'wg'"
+    [(wgExtendedForecast)]="wgExtendedForecast"
+>
+
+</app-wg-body>

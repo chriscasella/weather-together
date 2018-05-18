@@ -28,6 +28,8 @@ export class WeatherComponent implements OnInit {
   nwsCurrentForecast:any = null;
   wbCurrentForecast:any = null;
 
+  wgExtendedForecast:any = null;
+
   constructor(private ZipcodeService: ZipcodeService, private WeatherService: WeatherService, private route: ActivatedRoute) { }
   
   

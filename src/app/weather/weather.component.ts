@@ -15,6 +15,7 @@ export class WeatherComponent implements OnInit {
   @Output() wgForecast:EventEmitter<any> = new EventEmitter();
   @Output() dsForecast:EventEmitter<any> = new EventEmitter();
   @Output() nwsForecast:EventEmitter<any> = new EventEmitter();
+  @Output() wbForecast:EventEmitter<any> = new EventEmitter();
 
   @Input() activeSation:any;
   
@@ -22,9 +23,10 @@ export class WeatherComponent implements OnInit {
 
   activeStation:string = 'wg';
 
-  wgCurrentForecast:any;
-  dsCurrentForecast:any;
-  nwsCurrentForecast:any;
+  wgCurrentForecast:any = null;
+  dsCurrentForecast:any = null;
+  nwsCurrentForecast:any = null;
+  wbCurrentForecast:any = null;
 
   constructor(private ZipcodeService: ZipcodeService, private WeatherService: WeatherService, private route: ActivatedRoute) { }
   
@@ -55,6 +57,8 @@ export class WeatherComponent implements OnInit {
         this.getDsForecast();
       case 'nws':
         this.getNwsForecast();
+      case 'wb':
+        this.getWbForecast();
     }
   };
 
@@ -75,11 +79,19 @@ export class WeatherComponent implements OnInit {
     this.nwsForecast.emit(this.nwsCurrentForecast);
   };
 
+  emitWbForecast(){
+    this.wbForecast.emit(this.wbCurrentForecast);
+  };
+
   getDsForecast(){
-    this.WeatherService.getDsForecast().subscribe(res=>{
-      this.dsCurrentForecast = res;
+    if(this.dsCurrentForecast == null){
+      this.WeatherService.getDsForecast().subscribe(res=>{
+        this.dsCurrentForecast = res;
+        this.emitDsForecast();
+      })
+    } else {
       this.emitDsForecast();
-    })
+    }
   };
 
   getWgForecast(){
@@ -93,10 +105,26 @@ export class WeatherComponent implements OnInit {
   };
 
   getNwsForecast(){
-    this.WeatherService.getNwsForecast().subscribe(res=>{
-      this.nwsCurrentForecast = res;
+    if(this.nwsCurrentForecast == null){
+      this.WeatherService.getNwsForecast().subscribe(res=>{
+        this.nwsCurrentForecast = res;
+        this.emitNwsForecast();
+      }) 
+    } else {
       this.emitNwsForecast();
-    })
+    }
+  };
+
+  getWbForecast(){
+    if(this.wbCurrentForecast == null){
+      this.WeatherService.getWbForecast().subscribe(res=>{
+        this.wbCurrentForecast = res;
+        // this.wbForecast.emit(this.wbCurrentForecast)
+        this.emitWbForecast();
+      });
+    } else {
+      this.emitWbForecast();
+    }
   };
 
   setLocalStation($event: any){

@@ -6,16 +6,16 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
   styleUrls: ['./wg-body.component.css']
 })
 export class WgBodyComponent implements OnInit, OnChanges {
-  @Input() wgExtendedForecast:any;
+  @Input() wgHourlyForecast:any;
 
-  extendedForecast:any;
+  hourlyForecast:any;
   constructor() { }
 
   ngOnInit() {
   }
   ngOnChanges(){
-    this.extendedForecast = this.wgExtendedForecast.forecast.simpleforecast.forecastday;
-    console.log('from wg body comp',this.extendedForecast);
+    this.hourlyForecast = this.wgHourlyForecast.hourly_forecast;
+    console.log('from wg body comp',this.hourlyForecast);
   }
 
 }

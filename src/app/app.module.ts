@@ -22,6 +22,7 @@ import { DarkSkyComponent } from './weather/dark-sky/dark-sky.component';
 import { NwsComponent } from './weather/nws/nws.component';
 import { WeatherbitComponent } from './weather/weatherbit/weatherbit.component';
 import { WgBodyComponent } from './weather/wunder-ground/wg-body/wg-body.component';
+import { ForecastContainerComponent } from './weather/wunder-ground/wg-body/forecast-container/forecast-container.component';
 
 
 
@@ -50,7 +51,8 @@ const appRoutes: Routes = [
     DarkSkyComponent,
     NwsComponent,
     WeatherbitComponent,
-    WgBodyComponent
+    WgBodyComponent,
+    ForecastContainerComponent
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class WeatherComponent implements OnInit {
   @Output() localStation:EventEmitter<any> = new EventEmitter();
   @Output() wgForecast:EventEmitter<any> = new EventEmitter();
-  @Output() wgExtendedEmitter:EventEmitter<any> = new EventEmitter();
+  @Output() wgHourlyEmitter:EventEmitter<any> = new EventEmitter();
   @Output() dsForecast:EventEmitter<any> = new EventEmitter();
   @Output() nwsForecast:EventEmitter<any> = new EventEmitter();
   @Output() wbForecast:EventEmitter<any> = new EventEmitter();
@@ -29,7 +29,7 @@ export class WeatherComponent implements OnInit {
   nwsCurrentForecast:any = null;
   wbCurrentForecast:any = null;
 
-  wgExtendedForecast:any = null;
+  wgHourlyForecast:any = null;
 
   constructor(private ZipcodeService: ZipcodeService, private WeatherService: WeatherService, private route: ActivatedRoute) { }
   
@@ -78,8 +78,8 @@ export class WeatherComponent implements OnInit {
     this.wgForecast.emit(this.wgCurrentForecast);
   };
 
-  emitWgExtendedForecast(){
-    this.wgExtendedEmitter.emit(this.wgExtendedForecast);
+  emitWgHourlyForecast(){
+    this.wgHourlyEmitter.emit(this.wgHourlyForecast);
   };
 
   emitNwsForecast(){
@@ -106,21 +106,21 @@ export class WeatherComponent implements OnInit {
     const lon = this.myLocalStation.location.lon;
     this.WeatherService.getWgForecast(lat,lon).subscribe(res=> {
       //console.log(res);
-      this.getWgExtendedForecast();
+      this.getWgHourlyForecast();
       this.wgCurrentForecast = res;
       this.emitWgForecast();
     })
   };
 
-  getWgExtendedForecast(){
-    if(this.wgExtendedForecast == null ){
-      this.WeatherService.getWgExtendedForecast().subscribe(res=>{
+  getWgHourlyForecast(){
+    if(this.wgHourlyForecast == null ){
+      this.WeatherService.getWgHourlyForecast().subscribe(res=>{
         console.log('wg extended forecast',res);
-        this.wgExtendedForecast = res;
-        this.emitWgExtendedForecast();
+        this.wgHourlyForecast = res;
+        this.emitWgHourlyForecast();
       })
     }else{
-      this.emitWgExtendedForecast();
+      this.emitWgHourlyForecast();
     }
   }
 

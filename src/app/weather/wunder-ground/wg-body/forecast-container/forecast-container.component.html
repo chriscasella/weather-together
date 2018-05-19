@@ -1,6 +1,6 @@
 <ul class="card">
   <div class="card-header">
-    <h2> Hourly Forecast</h2>
+    <h2> The next {{(wgHourlyParsedDays.length == 2) ? 'two' : 'three' }} days</h2>
   </div>
   <li class="list-group list-group-flush">
     <div class="list-group-item" *ngFor="let day of wgHourlyParsedDays">

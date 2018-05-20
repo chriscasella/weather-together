@@ -4,12 +4,7 @@
   style="margin:0 auto;" 
   *ngIf="!isWgHourlyForecast">
 </mat-progress-spinner>
-<ul class="card" *ngIf="wgHourlyForecast">
-  <div class="card-header">
-    <span md-colors="{color:'primary'}">
-      <h2 class="text-center">{{(wgHourlyParsedDays.length == 2) ? 'Next Two Days' : 'Tomorrow' }}</h2>
-    </span>
-  </div>
+<ul *ngIf="wgHourlyForecast">
   <li class="list-group list-group-flush">
     <div class="list-group-item" *ngFor="let day of wgHourlyParsedDays; let i = index">
       <mat-card

@@ -7,6 +7,8 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 })
 export class ForecastContainerComponent implements OnInit, OnChanges {
   @Input() wgHourlyForecast;
+  isWgHourlyForecast:boolean = false;
+  numOfDays = {};
   constructor() { }
   
   ngOnInit() {
@@ -17,6 +19,7 @@ export class ForecastContainerComponent implements OnInit, OnChanges {
   }
   public wgHourlyParsedDays = [];
   parseDaysFromHourly(){
+    this.isWgHourlyForecast = true;
     let currentDay = this.wgHourlyForecast[0].FCTTIME.weekday_name;
     let payLoad = [];
     for(let hour of this.wgHourlyForecast){
@@ -33,6 +36,9 @@ export class ForecastContainerComponent implements OnInit, OnChanges {
       }
     }
     console.log('parsed Days', this.wgHourlyParsedDays);
+    if(this.wgHourlyParsedDays.length == 1){
+
+    }
   }
 
   checkWeatherIcon(w){

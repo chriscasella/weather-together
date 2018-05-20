@@ -1,7 +1,13 @@
-<ul class="card">
+<mat-progress-spinner 
+  mode="indeterminate" 
+  [color]="primary" 
+  style="margin:0 auto;" 
+  *ngIf="!isWgHourlyForecast">
+</mat-progress-spinner>
+<ul class="card" *ngIf="wgHourlyForecast">
   <div class="card-header">
     <span md-colors="{color:'primary'}">
-      <h2 class="text-center"> The next {{(wgHourlyParsedDays.length == 2) ? 'two' : 'three' }} days</h2>
+      <h2 class="text-center">{{(wgHourlyParsedDays.length == 2) ? 'Next Two Days' : 'Tomorrow' }}</h2>
     </span>
   </div>
   <li class="list-group list-group-flush">
@@ -33,6 +39,9 @@
             </tr>
           </tbody>
         </table>
+        <app-wg-chart>
+        
+        </app-wg-chart>        
         </mat-card-content>
       </mat-card>
     </div>  

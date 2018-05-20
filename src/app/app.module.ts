@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatFormFieldModule, MatInputModule, MatCardModule, MatProgressSpinnerModule, MatIconModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material/menu';
 import { PatternValidator } from '@angular/forms';
+import { ChartistModule } from 'ng-chartist';
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -23,6 +25,7 @@ import { NwsComponent } from './weather/nws/nws.component';
 import { WeatherbitComponent } from './weather/weatherbit/weatherbit.component';
 import { WgBodyComponent } from './weather/wunder-ground/wg-body/wg-body.component';
 import { ForecastContainerComponent } from './weather/wunder-ground/wg-body/forecast-container/forecast-container.component';
+import { WgChartComponent } from './weather/wunder-ground/wg-body/forecast-container/wg-chart/wg-chart.component';
 
 
 
@@ -52,7 +55,8 @@ const appRoutes: Routes = [
     NwsComponent,
     WeatherbitComponent,
     WgBodyComponent,
-    ForecastContainerComponent
+    ForecastContainerComponent,
+    WgChartComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +70,8 @@ const appRoutes: Routes = [
     MatIconModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    ChartistModule
   ],
   providers: [WeatherService, ZipcodeService],
   bootstrap: [AppComponent]

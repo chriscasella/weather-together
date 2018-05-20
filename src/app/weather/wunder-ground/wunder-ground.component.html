@@ -1,5 +1,13 @@
-<mat-progress-spinner *ngIf="wgCurrentForecast == undefined"></mat-progress-spinner>
-<div class="container" *ngIf="isWgCurrentForecast">
+
+<mat-progress-spinner
+  mode="indeterminate"
+  [color]="primary"
+  style="margin:0 auto;"
+  *ngIf="!isWgCurrentForecast"
+  >
+</mat-progress-spinner>
+
+<div class="container" *ngIf="isWgCurrentForecast" [style.border-radius]="'15px'">
   <mat-card>
     <mat-card-title>
       <div class="row">

@@ -38,4 +38,8 @@ export class WeatherService {
     getWbForecast(){
         return this.http.get('https://api.weatherbit.io/v2.0/current?lat=' + this.lat + '&lon=' + this.lon + '&key=' + this.wb_key + '&units=I');
     };
+
+    getWgHourlyForecast(){
+        return this.http.get('http://api.wunderground.com/api/' + this.wg_key + '/hourly/q/' + this.lat + ',' + this.lon + '.json');
+    }
 }

@@ -1,0 +1,45 @@
+<mat-progress-spinner 
+  mode="indeterminate" 
+  [color]="primary" 
+  style="margin:0 auto;" 
+  *ngIf="!isWgHourlyForecast">
+</mat-progress-spinner>
+<ul *ngIf="wgHourlyForecast">
+  <li class="list-group list-group-flush">
+    <div class="list-group-item" *ngFor="let day of wgHourlyParsedDays; let i = index">
+      <mat-card
+       [style.backgroundColor]="'Gainsboro'"
+       >
+        <mat-card-title>
+          <h3 class="text-center"> {{day[0].FCTTIME.weekday_name}}</h3>
+        </mat-card-title>
+        <mat-card-content>
+        <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th scope="col">Hour</th>
+              <th scope="col">Temp</th>
+              <th scope="col">Condition</th>
+              <th scope="col">Humidity</th>
+              <th scope="col">Wind Speed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let hour of day">
+              <th scope="row">{{hour.FCTTIME.civil}}</th>
+              <td> {{hour.temp.english}} F</td>
+              <td>{{hour.condition}} <i [class]="checkWeatherIcon(hour.condition)"></i></td>
+              <td>{{hour.humidity}}%</td>
+              <td>{{hour.wspd.english}} MPH</td>
+            </tr>
+          </tbody>
+        </table>
+        <app-wg-chart
+          [WgCharts]="WgCharts[i]"
+        >
+        </app-wg-chart>        
+        </mat-card-content>
+      </mat-card>
+    </div>  
+  </li>
+</ul>

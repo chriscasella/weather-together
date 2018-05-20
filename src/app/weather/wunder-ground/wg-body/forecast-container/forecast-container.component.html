@@ -11,7 +11,7 @@
     </span>
   </div>
   <li class="list-group list-group-flush">
-    <div class="list-group-item" *ngFor="let day of wgHourlyParsedDays">
+    <div class="list-group-item" *ngFor="let day of wgHourlyParsedDays; let i = index">
       <mat-card
        [style.backgroundColor]="'Gainsboro'"
        >
@@ -39,8 +39,9 @@
             </tr>
           </tbody>
         </table>
-        <app-wg-chart>
-        
+        <app-wg-chart
+          [WgCharts]="WgCharts[i]"
+        >
         </app-wg-chart>        
         </mat-card-content>
       </mat-card>

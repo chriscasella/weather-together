@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-forecast-container',
@@ -6,9 +6,11 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
   styleUrls: ['./forecast-container.component.css']
 })
 export class ForecastContainerComponent implements OnInit, OnChanges {
+  @Output() WgChartData:EventEmitter<any> = new EventEmitter;
   @Input() wgHourlyForecast;
   isWgHourlyForecast:boolean = false;
   numOfDays = {};
+  WgCharts = [];
   constructor() { }
   
   ngOnInit() {
@@ -22,13 +24,27 @@ export class ForecastContainerComponent implements OnInit, OnChanges {
     this.isWgHourlyForecast = true;
     let currentDay = this.wgHourlyForecast[0].FCTTIME.weekday_name;
     let payLoad = [];
+    let chartsPayload;
+    let series = [];
+    let loopSeries = [];
+    let labels = [];
+    let loopLabels = [];
     for(let hour of this.wgHourlyForecast){
       // console.log(hour);
       if(hour.FCTTIME.weekday_name == currentDay){
         payLoad.push(hour)
+        labels.push(hour.FCTTIME.civil)
+        series.push(hour.temp.english);
         // console.log('pushed', payLoad)
       } else {
         this.wgHourlyParsedDays.push(payLoad);
+        chartsPayload = {
+          series: [series],
+          labels: labels
+        }
+        this.WgCharts.push(chartsPayload);
+        series = [];
+        labels = [];
         payLoad = [];
         currentDay = hour.FCTTIME.weekday_name;
         payLoad.push(hour);
@@ -39,7 +55,40 @@ export class ForecastContainerComponent implements OnInit, OnChanges {
     if(this.wgHourlyParsedDays.length == 1){
 
     }
+    this.emitCharts();
   }
+
+  // buildChartData(){
+  //   const data = this.wgHourlyParsedDays;
+  //   //series is an array of arrays series : [ [0,1,2], [3,2,1] ]
+  //   let series = [];
+  //   //lables is an array of data labels : ['Mon', 'Tue']
+  //   let labels = [];
+  //   let chart = { 
+  //     labels: labels,
+  //     series: series
+  //   };
+  //   let loopSeries = [];
+
+  //   const chartsPayLoad  = data.map( day => { 
+  //     day.forEach(hour => {
+  //       labels.push(hour.FCTTIME.civil);
+  //       series.push(hour.temp.english)
+  //       if(day.length == day.indexOf(hour)){
+          
+  //         series = [];
+  //         labels = [];  
+  //       }
+  //     });
+  //   })
+  //   console.log(chartsPayLoad);
+  //   this.WgCharts = chartsPayLoad;
+  //   this.emitCharts
+  // };
+  
+  emitCharts(){
+    this.WgChartData.emit(this.WgCharts);
+  };
 
   checkWeatherIcon(w){
     console.log(w);

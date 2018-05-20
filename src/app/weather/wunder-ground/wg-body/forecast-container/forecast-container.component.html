@@ -1,12 +1,16 @@
 <ul class="card">
   <div class="card-header">
-    <h2> The next {{(wgHourlyParsedDays.length == 2) ? 'two' : 'three' }} days</h2>
+    <span md-colors="{color:'primary'}">
+      <h2 class="text-center"> The next {{(wgHourlyParsedDays.length == 2) ? 'two' : 'three' }} days</h2>
+    </span>
   </div>
   <li class="list-group list-group-flush">
     <div class="list-group-item" *ngFor="let day of wgHourlyParsedDays">
-      <mat-card>
+      <mat-card
+       [style.backgroundColor]="'Gainsboro'"
+       >
         <mat-card-title>
-          <h3> {{day[0].FCTTIME.weekday_name}}</h3>
+          <h3 class="text-center"> {{day[0].FCTTIME.weekday_name}}</h3>
         </mat-card-title>
         <mat-card-content>
         <table class="table table-striped table-dark">

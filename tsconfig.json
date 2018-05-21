@@ -15,10 +15,5 @@
       "es2017",
       "dom"
     ]
-  },  
-  "paths": {
-    "angular2-chartist": [
-      "../node_modules/angular2-chartist/src"
-    ]
-  },
+  }
 }

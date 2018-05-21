@@ -1,16 +1,16 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { gitIgnore } from './gitIgnore';
+import { environment } from '../environments/environment.prod';
 import { Subject } from 'rxjs/Subject';
 import { mergeMap } from 'rxjs/operators';
 import 'rxjs/Rx';
 
 @Injectable()
 export class WeatherService {
-    wg_key = gitIgnore.wg_key
-    ds_key = gitIgnore.ds_key
-    wb_key = gitIgnore.wb_key
+    wg_key = environment.wg_key
+    ds_key = environment.ds_key
+    wb_key = environment.wb_key
     //from wg initial call
     lat:string
     lon:string

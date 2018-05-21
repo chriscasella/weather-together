@@ -1,13 +1,13 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { gitIgnore } from './gitIgnore';
+import { environment } from '../environments/environment.prod';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/Rx';
 @Injectable ()
 export class ZipcodeService {
     
-    wg_key = gitIgnore.wg_key;
+    wg_key = environment.wg_key;
     constructor(private http: HttpClient){}
 
     getZip(zip:string){

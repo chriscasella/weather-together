@@ -12,7 +12,7 @@ export interface Chart {
 @Component({
   selector: 'app-wg-chart',
   templateUrl: './wg-chart.component.html',
-  styleUrls: ['./wg-chart.component.css', "./node_modules/chartist/dist/chartist.css"]
+  styleUrls: ['./wg-chart.component.css']
 })
 export class WgChartComponent implements OnChanges {
   @Input() WgCharts:any;

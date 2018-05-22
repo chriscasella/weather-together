@@ -19,7 +19,7 @@ export class WeatherService {
     getWgForecast(lat:string, lon:string){
         this.lat = lat;
         this.lon = lon;
-        return this.http.get('http://api.wunderground.com/api/' + this.wg_key + '/conditions/q/' + lat + ',' + lon + '.json')
+        return this.http.get('https://api.wunderground.com/api/' + this.wg_key + '/conditions/q/' + lat + ',' + lon + '.json')
     };
 
     getDsForecast(){
@@ -40,6 +40,6 @@ export class WeatherService {
     };
 
     getWgHourlyForecast(){
-        return this.http.get('http://api.wunderground.com/api/' + this.wg_key + '/hourly/q/' + this.lat + ',' + this.lon + '.json');
+        return this.http.get('https://api.wunderground.com/api/' + this.wg_key + '/hourly/q/' + this.lat + ',' + this.lon + '.json');
     }
 }

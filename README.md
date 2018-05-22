@@ -1,8 +1,9 @@
-# WeatherTogether
+# Weather Together
 
 
-<h1>Weather Together<h1>
-[![Heroku](https://heroku-badge.herokuapp.com/?app=weather-together)]
+
+<img src="https://heroku-badge.herokuapp.com/?app=weather-together">
+<div align="center">
 <h3>View the forecasts of four individual weather services all at once!</h3>
 
 
@@ -22,6 +23,8 @@ Weather Service RESTful API's
     <li>Weatherbit.io</li>
     <li>US National Weather Service</li>
 </ul>
+</div>
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
+

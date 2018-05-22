@@ -3,3 +3,8 @@
     height: 100%;
     background-color: grey;
 }
+
+.card-margins{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}

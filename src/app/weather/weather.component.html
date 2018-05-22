@@ -11,25 +11,25 @@
     ></app-navbar>
     <app-wunder-ground
         *ngIf="activeStation == 'wg'"
-        class="weather-card"
+        class="card-margins"
         [(wgCurrentForecast)]="wgCurrentForecast"
     >   
     </app-wunder-ground>
     <app-dark-sky
         *ngIf="activeStation == 'ds'"
-        class="weather-card"
+        class="card-margins"
         [(dsCurrentForecast)]="dsCurrentForecast"
     >
     </app-dark-sky>
     <app-nws
         *ngIf="activeStation == 'nws'"
-        class="weather-card"
+        class="card-margins"
         [(nwsCurrentForecast)]="nwsCurrentForecast"
     >
     </app-nws>
     <app-weatherbit
         *ngIf="activeStation == 'wb'"
-        class="weather-card"
+        class="card-margins"
         [(wbCurrentForecast)]="wbCurrentForecast"
     >
     </app-weatherbit>

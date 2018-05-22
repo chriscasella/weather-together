@@ -1,4 +1,4 @@
-
+require(dotenv).config()
 
 const express = require('express');
 
@@ -7,7 +7,7 @@ const app = express();
 //environment variables
 app.use(express.static(__dirname + '/dist'));
 const port = 8450;
-app.set('port', (port || 5050));
+app.set('port', (process.env.PORT || 5050));
 
 //For avoidong Heroku $PORT error
 app.listen(app.get('port'), function () {
